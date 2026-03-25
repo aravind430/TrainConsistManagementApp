@@ -1,25 +1,39 @@
 import java.util.ArrayList;
 import java.util.List;
 
-    /**
-     * UC1: Initialize Train and Display Consist Summary
-     * This class serves as the entry point for the Train Consist Management App.
-     */
-    public class TrainConsistManagementApp {
+/**
+ * UC2: Add Passenger Bogies to Train (ArrayList Operations)
+ * This class demonstrates CRUD operations on a dynamic collection.
+ */
+public class TrainConsistManagementApp {
 
-        public static void main(String[] args) {
-            // 1. Display Welcome Message
-            System.out.println("=== Train Consist Management App ===");
+    public static void main(String[] args) {
+        // 1. Initialize the Train App
+        System.out.println("=== Train Consist Management App ===");
 
-            // 2. Initialize an empty List using ArrayList (Dynamic Collection)
-            // We use the List interface for abstraction and ArrayList for resizability.
-            List<String> trainConsist = new ArrayList<>();
+        // 2. Create an ArrayList for passenger bogies
+        List<String> passengerBogies = new ArrayList<>();
 
-            // 3. Display the initial bogie count
-            // Using .size() allows us to track the current length of the collection.
-            System.out.println("Initial Bogie Count: " + trainConsist.size());
+        // 3. Add Bogies: Sleeper, AC Chair, First Class
+        // ArrayList preserves the insertion order, simulating the order of attachment.
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
 
-            // 4. Program continues...
-            System.out.println("Train system initialized successfully.");
-        }
+        System.out.println("After Adding Bogies: " + passengerBogies);
+
+        // 4. Remove one bogie (e.g., AC Chair)
+        // This simulates detaching a coach for maintenance or rerouting.
+        passengerBogies.remove("AC Chair");
+        System.out.println("After Removing AC Chair: " + passengerBogies);
+
+        // 5. Use contains() to check if Sleeper exists
+        // This is a search operation to verify if a specific coach is in the consist.
+        boolean hasSleeper = passengerBogies.contains("Sleeper");
+        System.out.println("Is Sleeper bogie present? " + hasSleeper);
+
+        // 6. Print final list state and count
+        System.out.println("Final Train Consist: " + passengerBogies);
+        System.out.println("Total Bogies: " + passengerBogies.size());
     }
+}
