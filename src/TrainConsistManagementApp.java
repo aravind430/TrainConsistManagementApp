@@ -1,39 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * UC2: Add Passenger Bogies to Train (ArrayList Operations)
- * This class demonstrates CRUD operations on a dynamic collection.
+ * UC3: Track Unique Bogie IDs (Set – HashSet)
+ * This class ensures that every bogie added to the system has a unique identifier.
  */
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
-        // 1. Initialize the Train App
         System.out.println("=== Train Consist Management App ===");
+        System.out.println("Enforcing Unique Bogie IDs...");
 
-        // 2. Create an ArrayList for passenger bogies
-        List<String> passengerBogies = new ArrayList<>();
+        // 1. Initialize a HashSet for Bogie IDs
+        // HashSet implements the Set interface, which automatically prevents duplicates.
+        Set<String> bogieIds = new HashSet<>();
 
-        // 3. Add Bogies: Sleeper, AC Chair, First Class
-        // ArrayList preserves the insertion order, simulating the order of attachment.
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // 2. Add Bogie IDs to the Set
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
 
-        System.out.println("After Adding Bogies: " + passengerBogies);
+        // 3. Attempt to add a duplicate ID (Intentional)
+        // In a List, this would add a second entry. In a Set, it is simply ignored.
+        bogieIds.add("BG101");
 
-        // 4. Remove one bogie (e.g., AC Chair)
-        // This simulates detaching a coach for maintenance or rerouting.
-        passengerBogies.remove("AC Chair");
-        System.out.println("After Removing AC Chair: " + passengerBogies);
+        // 4. Print the final set
+        // Note: The order of output may differ from insertion order because HashSet is unordered.
+        System.out.println("Current Bogie IDs in System: " + bogieIds);
 
-        // 5. Use contains() to check if Sleeper exists
-        // This is a search operation to verify if a specific coach is in the consist.
-        boolean hasSleeper = passengerBogies.contains("Sleeper");
-        System.out.println("Is Sleeper bogie present? " + hasSleeper);
+        // 5. Display the count to verify deduplication
+        System.out.println("Total Unique Bogies: " + bogieIds.size());
 
-        // 6. Print final list state and count
-        System.out.println("Final Train Consist: " + passengerBogies);
-        System.out.println("Total Bogies: " + passengerBogies.size());
+        System.out.println("Verification: Duplicate 'BG101' was automatically rejected.");
     }
 }
